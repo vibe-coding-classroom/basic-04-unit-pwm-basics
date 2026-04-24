@@ -1,5 +1,3 @@
-Viewed basic-04-unit-pwm-basics.html:1-402
-
 針對 **`basic-04-unit-pwm-basics` (ESP32 PWM 基礎：占空比的魔法)** 單元，這是學員從「恆定輸出」轉向「按需分配能量」的認知轉折。它要求學員具備 **能量調變 (Energy Modulation)** 的概念，學習如何利用高頻開關模擬類比效果，並解決物理世界中如 **「靜摩擦力 (Static Friction)」** 與生物世界中 **「人眼非線性感知 (Visual Non-linearity)」** 的補償問題。
 
 以下是在 **GitHub Classroom** 部署其作業 (Assignments) 的具體建議：
