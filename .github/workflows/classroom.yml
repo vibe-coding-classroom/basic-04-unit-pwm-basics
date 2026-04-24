@@ -36,7 +36,7 @@ jobs:
           pip install platformio
 
       - name: Build
-        id: build-project
+        id: build
         uses: education/autograding-command-grader@v1
         with:
           test-name: Build
@@ -45,29 +45,29 @@ jobs:
           timeout: 10
           max-score: 50
 
-      - name: MotorFormula
-        id: smart-drive-check
+      - name: Motor
+        id: motor
         uses: education/autograding-command-grader@v1
         with:
-          test-name: MotorFormula
+          test-name: Motor
           command: grep -E "MOTOR_START_OFFSET.*\+.*speed.*255.*MOTOR_START_OFFSET.*/.*255" src/main.cpp
           timeout: 1
           max-score: 20
 
-      - name: GammaLogic
-        id: gamma-check
+      - name: Gamma
+        id: gamma
         uses: education/autograding-command-grader@v1
         with:
-          test-name: GammaLogic
+          test-name: Gamma
           command: grep -E "i.*i.*/.*255" src/main.cpp
           timeout: 1
           max-score: 20
 
-      - name: ReportFile
-        id: report-check
+      - name: Report
+        id: report
         uses: education/autograding-command-grader@v1
         with:
-          test-name: ReportFile
+          test-name: Report
           command: test -f docs/Report.md
           timeout: 1
           max-score: 10
@@ -75,9 +75,9 @@ jobs:
       - name: Autograding Reporter
         uses: education/autograding-grading-reporter@v1
         env:
-          BUILD_RESULTS: "${{steps.build-project.outputs.result}}"
-          MOTORFORMULA_RESULTS: "${{steps.smart-drive-check.outputs.result}}"
-          GAMMALOGIC_RESULTS: "${{steps.gamma-check.outputs.result}}"
-          REPORTFILE_RESULTS: "${{steps.report-check.outputs.result}}"
+          BUILD_RESULTS: "${{steps.build.outputs.result}}"
+          MOTOR_RESULTS: "${{steps.motor.outputs.result}}"
+          GAMMA_RESULTS: "${{steps.gamma.outputs.result}}"
+          REPORT_RESULTS: "${{steps.report.outputs.result}}"
         with:
-          runners: build-project,smart-drive-check,gamma-check,report-check
+          runners: build,motor,gamma,report
